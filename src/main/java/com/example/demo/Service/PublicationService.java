@@ -52,7 +52,6 @@ public class PublicationService {
 
     public boolean deletePost(String publicationId) {
         Publication publicationById = (Publication) publicationRepository.findPublicationById(publicationId);
-        likeRepository.deleteLikesByPublicationId(publicationId);
         commentRepository.deleteCommentsByPublicationId(publicationId);
         publicationRepository.deleteById(publicationId);
         return true;
