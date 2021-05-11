@@ -31,6 +31,23 @@ public class Security extends WebSecurityConfigurerAdapter {
 
     @Override
     public void configure(HttpSecurity http) throws Exception {
+        http.authorizeRequests()
+                .antMatchers("/subscription/**")
+                .fullyAuthenticated()
+                .antMatchers(HttpMethod.POST, "/images/**")
+                .fullyAuthenticated()
+                .antMatchers(HttpMethod.POST, "/publication/**")
+                .fullyAuthenticated()
+                .antMatchers(HttpMethod.DELETE, "/publication/**")
+                .fullyAuthenticated()
+                .antMatchers(HttpMethod.DELETE, "/likes/**")
+                .fullyAuthenticated()
+                .antMatchers(HttpMethod.POST, "/likes/**")
+                .fullyAuthenticated()
+                .antMatchers(HttpMethod.DELETE, "/comment/**")
+                .fullyAuthenticated()
+                .antMatchers(HttpMethod.POST, "/comment/**")
+                .fullyAuthenticated();
 
         http.authorizeRequests()
                 .anyRequest()
