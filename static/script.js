@@ -39,5 +39,16 @@ function changeStateUser() {
     user.isAuthorised = !user.isAuthorised;
 }
 function changeStatePost(id) {
+
+    this.publication = !publication;
+
+    function deleteLike() {
+        publication.remove(likes);
+    }
+
+    function addLike() {
+        publication.save(likes);
+    }
+
     publication[id].likes=false;
 }
