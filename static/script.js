@@ -29,3 +29,8 @@ let comment = {
     User:user
 };
 
+let addPublication = [];
+
+function addPublication(){
+    addPublication.push(publication)
+}
