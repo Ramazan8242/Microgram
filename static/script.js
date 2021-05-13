@@ -34,3 +34,7 @@ let addPublication = [];
 function addPublication(){
     addPublication.push(publication)
 }
+
+function changeStateUser() {
+    user.isAuthorised = !user.isAuthorised;
+}
