@@ -17,10 +17,8 @@ public class SubscriptionService {
     private final SubscriptionRepository subscriptionRepository;
 
     public SubscriptionDTO addSubscription(String userId, String toUserId) throws Exception {
-        User user = userRepository.findById(userId)
-                .orElseThrow(() -> new Exception("There is no such a user with " + userId + " id"));
-        User toUser = userRepository.findById(toUserId)
-                .orElseThrow(() -> new Exception("There is no such a user with " + userId + " id"));
+        User user = userRepository.findById(userId).orElseThrow(() -> new Exception("There is no such a user with " + userId + " id"));
+        User toUser = userRepository.findById(toUserId).orElseThrow(() -> new Exception("There is no such a user with " + userId + " id"));
         return SubscriptionDTO.from(subscriptionRepository.save(Subscription.createSubscription(user, toUser, LocalDate.now())));
     }
 

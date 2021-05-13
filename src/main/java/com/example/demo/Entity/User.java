@@ -26,19 +26,13 @@ public class User implements UserDetails {
     private String name;
     private String username;
     private String email;
-    private String noEncodePassword;
     private String password;
-    private Integer countOfPosts = 0;
-    private Integer countOfFollowers = 0;
-    private Integer countOfSubs = 0;
 
-    public static User createUser(String name, String username, String email, String notEncodedPass) {
+    public static User createUser(String name, String username, String email) {
         User user = new User();
         user.setName(name);
         user.setUsername(username);
         user.setEmail(email);
-        user.setNoEncodePassword(notEncodedPass);
-        user.setPassword(new BCryptPasswordEncoder().encode(user.getNoEncodePassword()));
         return user;
     }
 

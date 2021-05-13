@@ -18,25 +18,8 @@ import java.util.Random;
 public class UserService implements UserDetailsService {
     private final UserRepository userRepository;
 
-    public List<UserDTO> findUserByName(String name) {
-        List<User> names = userRepository.findByName(name);
-        List<UserDTO> users = new ArrayList<>();
-        for (User user : names) {
-            users.add(UserDTO.from(user));
-        }
-        return users;
-    }
-
     public UserDTO addUser(User user) {
-        return UserDTO.from(userRepository.save(User.createUser(user.getName(), user.getUsername(), user.getEmail(), user.getNoEncodePassword())));
-    }
-
-    public UserDTO findUserByLogin(String username) {
-        return UserDTO.from(userRepository.findByUsername(username));
-    }
-
-    public UserDTO findUserByEmail(String email) {
-        return UserDTO.from(userRepository.findByEmail(email).get());
+        return UserDTO.from(userRepository.save(User.createUser(user.getName(), user.getUsername(), user.getEmail())));
     }
 
     public boolean existsThereAnyUserByEmail(String email) {
@@ -52,12 +35,5 @@ public class UserService implements UserDetailsService {
         return userRepository.findByEmail(s)
                 .orElseThrow(() ->
                         new UsernameNotFoundException(String.format("user with email %s not found", s)));
-    }
-
-    public User getUser() {
-        Random r = new Random();
-        List<User> users = new ArrayList<>();
-        userRepository.findAll().forEach(u -> users.add(u));
-        return users.get(r.nextInt(users.size()));
     }
 }

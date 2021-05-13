@@ -8,6 +8,4 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface CommentRepository extends MongoRepository<Comment, String> {
-    Slice<Comment> findAllByPublicationId(Pageable pageable, String postId);
-    void deleteCommentsByPublicationId(String id);
 }
