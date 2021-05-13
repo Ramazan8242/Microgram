@@ -38,3 +38,6 @@ function addPublication(){
 function changeStateUser() {
     user.isAuthorised = !user.isAuthorised;
 }
+function changeStatePost(id) {
+    publication[id].likes=false;
+}
