@@ -20,3 +20,11 @@ let publication = {
     likes: ""
     // Передал User к user
 };
+
+let comment = {
+    id : '1',
+    publication:publication,
+    message : 'dgsdfhdngx',
+    localDate : '10.08.19',
+    User:user
+};
