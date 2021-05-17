@@ -52,3 +52,9 @@ function changeStatePost(id) {
 
     publication[id].likes=false;
 }
+
+// 58
+
+function showSplashScreen() {
+    document.getElementById("splashScreen").hidden=true;
+}
