@@ -67,3 +67,8 @@ function createCommentElement(comment) {
     element.innerHTML = "<div>" + "</div>" + "<div>" + comment.message + "</div>" + "<div" + comment.date + "</div>";
     return element;
 }
+function createPostElement(post) {
+    let postElement = document.createElement("div")
+    postElement.innerHTML = "<div>" + '<img class="d-block w-100" src="${imageUrl}" alt="Post image">' + "</div>" + "<div>" + post.description + "</div>" + "<div" + post.date + "</div>";
+    return postElement;
+}
