@@ -57,11 +57,11 @@ function changeStatePost(id) {
 // 58
 
 function showSplashScreen() {
-    document.getElementById("splashScreen").hidden=true;
+    document.getElementById("splashScreen").hidden=false;
 }
 
 function hideSplashScreen() {
-    document.getElementById("splashScreen").hidden=false;
+    document.getElementById("splashScreen").hidden=true;
 }
 
 function createCommentElement(comment) {
@@ -74,4 +74,8 @@ function createPostElement(post) {
     let createPost = document.createElement("div")
     createPost.innerHTML = "<div>" + '<img class="d-block w-100" src="${imageUrl}" alt="Post image">' + "</div>" + "<div>" + post.description + "</div>" + "<div" + post.date + "</div>"  + "<div" + post.username + "</div>";
     return createPost;
+}
+
+function addPost(postElement) {
+    document.getElementsByClassName('posts-container').append(postElement);
 }
