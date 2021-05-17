@@ -17,7 +17,8 @@ let publication = {
     publicationImage : "1.jpeg",
     User:user,
     Comment:comment,
-    likes: ""
+    likes: "",
+    description: ""
     // Передал User к user
 };
 
@@ -62,13 +63,15 @@ function showSplashScreen() {
 function hideSplashScreen() {
     document.getElementById("splashScreen").hidden=false;
 }
+
 function createCommentElement(comment) {
     let element = document.createElement('div')
-    element.innerHTML = "<div>" + "</div>" + "<div>" + comment.message + "</div>" + "<div" + comment.date + "</div>";
+    element.innerHTML = "<div>" + "</div>" + "<div>" + comment.message + "</div>" + "<div" + comment.date + "</div>"  + "<div" + comment.username + "</div>";
     return element;
 }
+
 function createPostElement(post) {
     let postElement = document.createElement("div")
-    postElement.innerHTML = "<div>" + '<img class="d-block w-100" src="${imageUrl}" alt="Post image">' + "</div>" + "<div>" + post.description + "</div>" + "<div" + post.date + "</div>";
+    postElement.innerHTML = "<div>" + '<img class="d-block w-100" src="${imageUrl}" alt="Post image">' + "</div>" + "<div>" + post.description + "</div>" + "<div" + post.date + "</div>"  + "<div" + post.username + "</div>";
     return postElement;
 }
