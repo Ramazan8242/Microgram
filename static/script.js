@@ -65,13 +65,13 @@ function hideSplashScreen() {
 }
 
 function createCommentElement(comment) {
-    let element = document.createElement('div')
-    element.innerHTML = "<div>" + "</div>" + "<div>" + comment.message + "</div>" + "<div" + comment.date + "</div>"  + "<div" + comment.username + "</div>";
-    return element;
+    let createComment = document.createElement('div')
+    createComment.innerHTML = "<div>" + "</div>" + "<div>" + comment.message + "</div>" + "<div" + comment.date + "</div>"  + "<div" + comment.username + "</div>";
+    return createComment;
 }
 
 function createPostElement(post) {
-    let postElement = document.createElement("div")
-    postElement.innerHTML = "<div>" + '<img class="d-block w-100" src="${imageUrl}" alt="Post image">' + "</div>" + "<div>" + post.description + "</div>" + "<div" + post.date + "</div>"  + "<div" + post.username + "</div>";
-    return postElement;
+    let createPost = document.createElement("div")
+    createPost.innerHTML = "<div>" + '<img class="d-block w-100" src="${imageUrl}" alt="Post image">' + "</div>" + "<div>" + post.description + "</div>" + "<div" + post.date + "</div>"  + "<div" + post.username + "</div>";
+    return createPost;
 }
