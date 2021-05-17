@@ -56,6 +56,19 @@ function changeStatePost(id) {
 
 // 58
 
+window.addEventListener('load', function () {
+    if (restoreUser() === null) {
+        showSplashScreen();
+    } else {
+        hideSplashScreen();
+    }
+});
+
+function restoreUser() {
+    const userAsJSON = localStorage.getItem('user');
+    return JSON.parse(userAsJSON);
+}
+
 function showSplashScreen() {
     document.getElementById("splashScreen").hidden=false;
 }
@@ -77,5 +90,5 @@ function createPostElement(post) {
 }
 
 function addPost(postElement) {
-    document.getElementsByClassName('posts-container').append(postElement);
+    document.getElementsByClassName('post-container')[0].append(postElement);
 }
