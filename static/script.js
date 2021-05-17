@@ -58,3 +58,7 @@ function changeStatePost(id) {
 function showSplashScreen() {
     document.getElementById("splashScreen").hidden=true;
 }
+
+function hideSplashScreen() {
+    document.getElementById("splashScreen").hidden=false;
+}
