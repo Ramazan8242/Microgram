@@ -62,3 +62,8 @@ function showSplashScreen() {
 function hideSplashScreen() {
     document.getElementById("splashScreen").hidden=false;
 }
+function createCommentElement(comment) {
+    let element = document.createElement('div')
+    element.innerHTML = "<div>" + "</div>" + "<div>" + comment.message + "</div>" + "<div" + comment.date + "</div>";
+    return element;
+}
