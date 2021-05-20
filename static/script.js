@@ -127,10 +127,3 @@ function createLike(e){
     setTimeout(() => heart.remove(), 1000);
     return heart;
 }
-
-//
-// var block = document.getElementById("one");
-// block.click() = function () {
-//     this.style.backgroundColor = 'red';
-//     this.onclick = null;
-// }
