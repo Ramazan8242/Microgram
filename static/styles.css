@@ -1,0 +1,72 @@
+*{
+    box-sizing: border-box;
+}
+body{
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+    overflow: auto;
+    margin: 0;
+}
+h2{
+    display: block;
+    margin-bottom: 20px;
+    text-align: center;
+}
+.fa-heart{
+    color: red;
+    margin: 2px;
+ }
+.photo-box{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    max-width: 1600px;
+    margin: 0 auto;
+}
+.like-photo{
+    height: 800px;
+    width: 1200px;
+    background-position: center !important;
+    background-size: cover !important;
+    margin: 0 10px 20px 10px;
+    cursor: pointer;
+    max-width: 100%;
+    position: relative;
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.20);
+}
+.like-photo .fa-heart{
+    position: absolute;
+    animation: grow 0.5s linear;
+    transform: translate(-50%, -50%) scale(0);
+}
+@keyframes grow{
+    to{
+        transform: translate(-50%, -50%) scale(10);
+        opacity: 0;
+    }
+}
+
+.justify-content-around{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+.button {
+    color: black;
+    background: #ffffff;
+    cursor: pointer;
+    user-select: none;
+    border: none;
+    outline: none;
+    transition: background 9999999s;
+}
+
+.button:active {
+    background: black;
+    transition: background 0s;
+}
