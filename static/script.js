@@ -57,13 +57,13 @@
 // 58
 
 function showSplashScreen() {
-    document.getElementById("splashScreen").hidden=false;
-    document.body.classList.remove('no-scroll');
+    document.getElementsByClassName("splashScreen")[0].style.display = "block";
+    document.body.classList.add("no-scroll");
 }
 
 function hideSplashScreen() {
-    document.getElementById("splashScreen").hidden=true;
-    document.body.classList.add('no-scroll');
+    document.getElementsByClassName("splashScreen")[0].style.display = "none";
+    document.body.classList.remove("no-scroll");
 }
 
 function createCommentElement(comment) {
@@ -158,14 +158,17 @@ function addPhoto() {
         }
     })
 }
-function showSplashScreen() {
-    document.getElementsByClassName("splashScreen")[0].style.display = "block";
-    document.body.classList.add("no-scroll");
-}
+window.addEventListener('load', function () {
+    if (restoreUser() === null) {
+        showSplashScreen();
+    } else {
+        hideSplashScreen();
+    }
+});
 
-function hideSplashScreen() {
-    document.getElementsByClassName("splashScreen")[0].style.display = "none";
-    document.body.classList.remove("no-scroll");
+function restoreUser() {
+    const userAsJSON = localStorage.getItem('user');
+    return JSON.parse(userAsJSON);
 }
 addLike();
 addPhoto();
