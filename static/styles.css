@@ -13,9 +13,10 @@ h2{
     text-align: center;
 }
 .fa-heart{
-    color: red;
+    color: rgb(255, 15, 15);
     margin: 2px;
  }
+
 .photo-box{
     display: flex;
     align-items: center;
@@ -57,7 +58,7 @@ h2{
 }
 
 .button {
-    color: black;
+    color: rgb(0, 0, 0);
     background: #ffffff;
     cursor: pointer;
     user-select: none;
@@ -67,6 +68,6 @@ h2{
 }
 
 .button:active {
-    background: black;
+    background: rgb(119, 119, 119);
     transition: background 0s;
 }

@@ -58,10 +58,12 @@
 
 function showSplashScreen() {
     document.getElementById("splashScreen").hidden=false;
+    document.body.classList.remove('no-scroll');
 }
 
 function hideSplashScreen() {
     document.getElementById("splashScreen").hidden=true;
+    document.body.classList.add('no-scroll');
 }
 
 function createCommentElement(comment) {
@@ -126,4 +128,23 @@ function createLike(e){
 
     setTimeout(() => heart.remove(), 1000);
     return heart;
+}
+
+function addLike(like) {
+    if (like.classList.contains("muted")) {
+        like.classList.remove("muted");
+        like.classList.add("text-danger");
+    } else {
+        like.classList.remove("text-danger");
+        like.classList.add("muted");
+    }
+}
+function showSplashScreen() {
+    document.getElementsByClassName("splashScreen")[0].style.display = "block";
+    document.body.classList.add("no-scroll");
+}
+
+function hideSplashScreen() {
+    document.getElementsByClassName("splashScreen")[0].style.display = "none";
+    document.body.classList.remove("no-scroll");
 }
