@@ -130,14 +130,33 @@ function createLike(e){
     return heart;
 }
 
-function addLike(like) {
-    if (like.classList.contains("muted")) {
-        like.classList.remove("muted");
-        like.classList.add("text-danger");
-    } else {
-        like.classList.remove("text-danger");
-        like.classList.add("muted");
-    }
+function addLike() {
+    let like = document.getElementsByClassName('fa-heart')[0]
+    like.addEventListener('click', function () {
+        if (like.classList.contains('fas')) {
+            like.classList.remove('fas');
+            like.classList.remove('text-danger');
+            like.classList.add('far');
+        } else {
+            like.classList.remove('far');
+            like.classList.add('text-danger');
+            like.classList.add('fas');
+        }
+    })
+}
+function addPhoto() {
+    let photo = document.getElementsByClassName("fa-bookmark")[0]
+    photo.addEventListener('click',function () {
+        if (photo.classList.contains('fas')) {
+            photo.classList.remove('fas');
+            photo.classList.remove('muted');
+            photo.classList.add('far');
+        } else {
+            photo.classList.remove('far');
+            photo.classList.add('muted');
+            photo.classList.add('fas');
+        }
+    })
 }
 function showSplashScreen() {
     document.getElementsByClassName("splashScreen")[0].style.display = "block";
@@ -148,3 +167,5 @@ function hideSplashScreen() {
     document.getElementsByClassName("splashScreen")[0].style.display = "none";
     document.body.classList.remove("no-scroll");
 }
+addLike();
+addPhoto();
