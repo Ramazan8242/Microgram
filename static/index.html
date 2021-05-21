@@ -14,23 +14,26 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
 <body class="no-scroll">
-<div id="splashScreen">
-    <button type="submit">Войти</button>
+<div class="openSplash">
+    <button>Войти</button>
 </div>
-<div class="posts-container"></div>
+<div class="splashScreen">
+        <div class="publication"><br/>
+            <div class="photo-box">
+                <div class="like-photo" style="background: url(images/1.jpg) no-repeat;"></div>
+            </div>
 
-<div class="publication"><br/>
-    <div class="photo-box">
-        <div class="like-photo" style="background: url(images/1.jpg) no-repeat;"></div>
-    </div>
+            <div class="d-flex justify-content-around">
+                <span class="h1 mx-2 text-danger"><i class="fas fa-heart"></i></span>
+                <span class="h1 mx-2 muted"><i class="fas fa-bookmark"></i></span>
+            </div>
 
-    <div class="d-flex justify-content-around">
-        <span class="h1 mx-2 text-danger"><i class="fas fa-heart"></i></span>
-        <span class="h1 mx-2 muted"><i class="fas fa-bookmark"></i></span>
-    </div>
-
+            <div class="closeSplash">
+                <button>Вернуться в сплэш скрин</button>
+            </div>
+        </div>
+    <div class="posts-container"></div>
 </div>
-
 <script src="script.js"></script>
 </body>
 </html>

@@ -34,7 +34,7 @@ h2{
     cursor: pointer;
     max-width: 100%;
     position: relative;
-    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.20);
+    box-shadow: 0 15px 25px red, 0 10px 10px red;
 }
 .like-photo .fa-heart{
     position: absolute;

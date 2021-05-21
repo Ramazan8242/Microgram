@@ -85,8 +85,6 @@ function addPost(postElement) {
 //59
 
 let likePhoto = document.querySelectorAll('.like-photo');
-const counts = document.getElementById('count');
-let countClick = 0;
 
 let clickTime = 0;
 
@@ -99,7 +97,6 @@ for(let photo of likePhoto){
             if((new Date().getTime() - clickTime) < 800){
                 var heart = createLike(e);
                 photo.appendChild(heart);
-                counts.innerHTML = ++countClick;
                 clickTime = 0;
             }
             else{
@@ -158,17 +155,13 @@ function addPhoto() {
         }
     })
 }
-window.addEventListener('load', function () {
-    if (restoreUser() === null) {
-        showSplashScreen();
-    } else {
-        hideSplashScreen();
-    }
-});
 
-function restoreUser() {
-    const userAsJSON = localStorage.getItem('user');
-    return JSON.parse(userAsJSON);
-}
+const openSplash = document.getElementsByClassName('openSplash')[0];
+openSplash.addEventListener('click', function () {showSplashScreen();});
+
+
+const closeSplash = document.getElementsByClassName('closeSplash')[0];
+closeSplash.addEventListener('click', function () {hideSplashScreen();});
+
 addLike();
 addPhoto();
