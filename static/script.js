@@ -102,7 +102,7 @@ function addFunction(post) {
         //     console.log(Object.fromEntries(data))
         //     // тут можно отправлять данные на сервер
         // }
-    
+        //
         // submit.addEventListener('submit', loginHandler);
 
         bckSplash.addEventListener('click',function () {
