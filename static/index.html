@@ -1,38 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="HandheldFriendly" content="true">
-    <meta name = "format-detection" content = "telephone=no">
-    <script src="https://use.fontawesome.com/e7727969df.js"></script>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
-    <title>Double Click Like</title>
-    <link rel="stylesheet" type="text/css"  href="styles.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    </head>
 <body class="no-scroll">
-<div class="openSplash">
-    <button>Войти</button>
-</div>
-<div class="splashScreen">
-        <div class="publication"><br/>
-            <div class="photo-box">
-                <div class="like-photo" style="background: url(images/1.jpg) no-repeat;"></div>
-            </div>
 
-            <div class="d-flex justify-content-around">
-                <span class="h1 mx-2 text-danger"><i class="fas fa-heart"></i></span>
-                <span class="h1 mx-2 muted"><i class="fas fa-bookmark"></i></span>
-            </div>
+<div class="openSplash"><button class="btn sing-in" id="sign-in">Войти</button></div>
 
-            <div class="closeSplash">
-                <button>Вернуться в сплэш скрин</button>
-            </div>
-        </div>
-    <div class="posts-container"></div>
+<div class="card" style="visibility: hidden">
+    <div class="like-heart">
+        <img class="d-block w-100" src="images/1.jpg" alt="Post image" >
+       <span class="h1 mx-2 text-danger like">
+         <i class="fas fa-heart"></i>
+       </span>
+   </div>
+
+   <div class="px-4 py-3">
+       <div class="d-flex justify-content-around">
+            <span class="h1 mx-2 muted"><i class="far fa-heart like1"></i></span>
+            <span class="h1 mx-2 muted"><i class="far fa-comment"></i></span>
+           <span class="mx-auto"></span><span class="h1 mx-2 muted"><i class="far fa-bookmark"></i></span>
+       </div>
+   </div>
+   <div class="closeSplash"><button class="back">Вернуться в Сплэш скрин</button></div>
 </div>
 <script src="script.js"></script>
 </body>

@@ -1,16 +1,16 @@
-// let user = {
-//     id : '1',
-//     name : 'Ramazan',
-//     userName : 'tu1anbaevv',
-//     email : 'Ramazan@gmail.con',
-//     password : '4284254',
-//     isAuthorised:false
-// };
-//
-// function authorised() {
-//     user.isAuthorised = !user.isAuthorised;
-// }
-//
+let user = {
+    id : '1',
+    name : 'Ramazan',
+    userName : 'tu1anbaevv',
+    email : 'Ramazan@gmail.con',
+    password : '4284254',
+    isAuthorised:false
+};
+
+function authorised() {
+    user.isAuthorised = !user.isAuthorised;
+}
+
 // let publication = {
 //     id : '1',
 //     date : '13.01.21',
@@ -21,7 +21,7 @@
 //     description: ""
 //     // Передал User к user
 // };
-//
+
 // let comment = {
 //     id : '1',
 //     publication:publication,
@@ -29,41 +29,41 @@
 //     localDate : '10.08.19',
 //     User:user
 // };
-//
-// let addPublication = [];
-//
+
+let addPublication = [];
+
 // function addPublication(){
 //     addPublication.push(publication)
 // }
-//
-// function changeStateUser() {
-//     user.isAuthorised = !user.isAuthorised;
-// }
-// function changeStatePost(id) {
-//
-//     this.publication = !publication;
-//
-//     function deleteLike() {
-//         publication.remove(likes);
-//     }
-//
-//     function addLike() {
-//         publication.save(likes);
-//     }
-//
-//     publication[id].likes=false;
-// }
+
+function changeStateUser() {
+    user.isAuthorised = !user.isAuthorised;
+}
+function changeStatePost(id) {
+
+    this.publication = !publication;
+
+    function deleteLike() {
+        publication.remove(likes);
+    }
+
+    function addLike() {
+        publication.save(likes);
+    }
+
+    publication[id].likes=false;
+}
 
 // 58
 
 function showSplashScreen() {
-    document.getElementsByClassName("splashScreen")[0].style.display = "block";
-    document.body.classList.add("no-scroll");
+    document.getElementsByClassName("card")[0].style.visibility = "hidden"
+    document.getElementsByClassName("openSplash")[0].style.visibility =null;
 }
 
 function hideSplashScreen() {
-    document.getElementsByClassName("splashScreen")[0].style.display = "none";
-    document.body.classList.remove("no-scroll");
+    document.getElementsByClassName("openSplash")[0].style.visibility = "hidden"
+    document.getElementsByClassName("card")[0].style.visibility =null;
 }
 
 function createCommentElement(comment) {
@@ -84,84 +84,68 @@ function addPost(postElement) {
 
 //59
 
-let likePhoto = document.querySelectorAll('.like-photo');
+function addFunction(post) {
+        let heart = post.getElementsByClassName('like1')[0];
+        let bookmark = post.getElementsByClassName('fa-bookmark')[0];
+        let img = post.getElementsByClassName('like-heart')[0];
+        let btn = post.getElementsByClassName('sing-in')[0];
+        let bckSplash = post.getElementsByClassName('back')[0];
+        // let submit = post.getElementsByClassName('post-form')[0];
+        let like = post.getElementsByClassName('like')[0].hidden=true
+    
+        // function loginHandler(e){
+        //     e.preventDefault();
+        //     const form = e.target;
+        //     const data = new FormData(form);
+        //     addPostsFromDB(data)
+        //     console.log("sdf")
+        //     console.log(Object.fromEntries(data))
+        //     // тут можно отправлять данные на сервер
+        // }
+    
+        // submit.addEventListener('submit', loginHandler);
 
-let clickTime = 0;
+        bckSplash.addEventListener('click',function () {
+              showSplashScreen()
+        })
+    
+        btn.addEventListener('click', function () {
+            hideSplashScreen()
+            console.log("asdas")
+        });
 
-for(let photo of likePhoto){
-    photo.addEventListener('click', (e) => {
-        if(clickTime === 0){
-            clickTime = new Date().getTime();
-        }
-        else{
-            if((new Date().getTime() - clickTime) < 800){
-                var heart = createLike(e);
-                photo.appendChild(heart);
-                clickTime = 0;
+        img.addEventListener('dblclick', function () {
+    
+         like = document.getElementsByClassName('like')[0].hidden=false;
+            setTimeout(() => (
+                like = document.getElementsByClassName('like')[0].hidden=true), 500)
+            heart.classList.add('text-danger');
+            heart.classList.add('fas');
+            heart.classList.remove('far');
+        })
+        ;
+    
+        bookmark.addEventListener('click', function () {
+            if (bookmark.classList.contains('fas')) {
+                bookmark.classList.remove('fas');
+                bookmark.classList.add('far');
+            } else {
+                bookmark.classList.remove('far');
+                bookmark.classList.add('fas');
             }
-            else{
-                clickTime = new Date().getTime();
+        })
+    
+        heart.addEventListener('click',function () {
+            if (heart.classList.contains('fas')) {
+                heart.classList.remove('fas');
+                heart.classList.remove('text-danger');
+                heart.classList.add('far');
+            } else {
+                heart.classList.remove('far');
+                heart.classList.add('text-danger');
+                heart.classList.add('fas');
             }
-        }
-    });
+        })
 }
 
-function createLike(e){
-    const heart = document.createElement('i');
-    heart.classList.add('fas');
-    heart.classList.add('fa-heart');
-
-    const x = e.clientX;
-    const y = e.clientY;
-
-    const leftOffset = e.target.offsetLeft;
-    const topOffset = e.target.offsetTop;
-
-    const xInside = x - leftOffset;
-    const yInside = y - topOffset;
-
-    heart.style.top = `${yInside}px`;
-    heart.style.left = `${xInside}px`;
-
-    setTimeout(() => heart.remove(), 1000);
-    return heart;
-}
-
-function addLike() {
-    let like = document.getElementsByClassName('fa-heart')[0]
-    like.addEventListener('click', function () {
-        if (like.classList.contains('fas')) {
-            like.classList.remove('fas');
-            like.classList.remove('text-danger');
-            like.classList.add('far');
-        } else {
-            like.classList.remove('far');
-            like.classList.add('text-danger');
-            like.classList.add('fas');
-        }
-    })
-}
-function addPhoto() {
-    let photo = document.getElementsByClassName("fa-bookmark")[0]
-    photo.addEventListener('click',function () {
-        if (photo.classList.contains('fas')) {
-            photo.classList.remove('fas');
-            photo.classList.remove('muted');
-            photo.classList.add('far');
-        } else {
-            photo.classList.remove('far');
-            photo.classList.add('muted');
-            photo.classList.add('fas');
-        }
-    })
-}
-
-const openSplash = document.getElementsByClassName('openSplash')[0];
-openSplash.addEventListener('click', function () {showSplashScreen();});
-
-
-const closeSplash = document.getElementsByClassName('closeSplash')[0];
-closeSplash.addEventListener('click', function () {hideSplashScreen();});
-
-addLike();
-addPhoto();
+addFunction(document.getElementsByClassName('no-scroll')[0]);
