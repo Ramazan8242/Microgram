@@ -11,30 +11,25 @@ function authorised() {
     user.isAuthorised = !user.isAuthorised;
 }
 
-// let publication = {
-//     id : '1',
-//     date : '13.01.21',
-//     publicationImage : "1.jpeg",
-//     User:user,
-//     Comment:comment,
-//     likes: "",
-//     description: ""
-//     // Передал User к user
-// };
+let publication = {
+    id : '1',
+    date : '13.01.21',
+    publicationImage : "1.jpeg",
+    User:user,
+    likes: "",
+    description: ""
+    // Передал User к user
+};
 
-// let comment = {
-//     id : '1',
-//     publication:publication,
-//     message : 'dgsdfhdngx',
-//     localDate : '10.08.19',
-//     User:user
-// };
+let comment = {
+    id : '1',
+    publication:publication,
+    message : 'dgsdfhdngx',
+    localDate : '10.08.19',
+    User:user
+};
 
 let addPublication = [];
-
-// function addPublication(){
-//     addPublication.push(publication)
-// }
 
 function changeStateUser() {
     user.isAuthorised = !user.isAuthorised;
@@ -57,13 +52,13 @@ function changeStatePost(id) {
 // 58
 
 function showSplashScreen() {
-    document.getElementsByClassName("card")[0].style.visibility = "hidden"
+    document.getElementsByClassName("cards")[0].style.visibility = "hidden"
     document.getElementsByClassName("openSplash")[0].style.visibility =null;
 }
 
 function hideSplashScreen() {
     document.getElementsByClassName("openSplash")[0].style.visibility = "hidden"
-    document.getElementsByClassName("card")[0].style.visibility =null;
+    document.getElementsByClassName("cards")[0].style.visibility =null;
 }
 
 function createCommentElement(comment) {
@@ -90,20 +85,32 @@ function addFunction(post) {
         let img = post.getElementsByClassName('like-heart')[0];
         let btn = post.getElementsByClassName('sing-in')[0];
         let bckSplash = post.getElementsByClassName('back')[0];
-        // let submit = post.getElementsByClassName('post-form')[0];
+        let submit = post.getElementsByClassName('post-form')[0];
         let like = post.getElementsByClassName('like')[0].hidden=true
-    
-        // function loginHandler(e){
-        //     e.preventDefault();
-        //     const form = e.target;
-        //     const data = new FormData(form);
-        //     addPostsFromDB(data)
-        //     console.log("sdf")
-        //     console.log(Object.fromEntries(data))
-        //     // тут можно отправлять данные на сервер
-        // }
-        //
-        // submit.addEventListener('submit', loginHandler);
+        let form = post.getElementsByClassName('com-upload-form')[0].getElementsByTagName('form')[0];
+        let com = post.getElementsByClassName('fa-comment')[0];
+        let data = new FormData(form);
+        let id = data.get("postId");
+
+        function loginHandler(e){
+            e.preventDefault();
+            const form = e.target;
+            const data = new FormData(form);
+            addPostsFromDB(data)
+            console.log("sdf")
+            console.log(Object.fromEntries(data))
+            // тут можно отправлять данные на сервер
+        }
+
+        com.addEventListener('click', function () {
+            if(document.getElementById('comFor-' + id).hidden === false) {
+                document.getElementById('comFor-' + id).hidden = true;
+            } else {
+                document.getElementById('comFor-' + id).hidden = false;
+            }
+        })
+
+        submit.addEventListener('submit', loginHandler);
 
         bckSplash.addEventListener('click',function () {
               showSplashScreen()
@@ -146,6 +153,14 @@ function addFunction(post) {
                 heart.classList.add('fas');
             }
         })
+}
+
+function addPostsFromDB(data) {
+    let i = data.length;
+    for (let j = 0; j < 1; j++) {
+        let p = new publication(data[j].id, data[j].user, data[j].publicationImage, data[j].likes, data[j].description);
+        addPost(creatPostElement(p));
+    }
 }
 
 addFunction(document.getElementsByClassName('no-scroll')[0]);

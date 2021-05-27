@@ -3,6 +3,10 @@
     margin-left: auto;
     margin-right: auto
 }
+.comentaries{
+    display: block;
+    border: 0ch;
+}
 .openSplash{
     position: fixed;
     top: 0;
