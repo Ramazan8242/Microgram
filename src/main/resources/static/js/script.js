@@ -1,4 +1,3 @@
-'use strict';
 window.addEventListener('load', function () {
     if (restoreUser() === null) {
         showSplashScreen();
