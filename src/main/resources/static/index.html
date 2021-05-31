@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson 60. Javascript 101</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<body class="no-scroll">
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col col-lg-7 posts-container" id="posts-cont">
+            <div id="1s" class="1s card my-3">
+                <div>
+                    <img class="d-block w-100" src="http://st.gde-fon.com/wallpapers_original/500236_kosmos_3d_art_5000x3000_www.Gde-Fon.com.jpg" alt="Post image">
+                </div>
+                <div class="px-4 py-3">
+
+                    <div class="d-flex justify-content-around">
+				<span class="h1 mx-2 muted">
+				  <i class="far fa-heart"></i>
+				</span>
+                        <span class="h1 mx-2 muted">
+				  <i class="far fa-comment"></i>
+				</span>
+                        <span class="mx-auto"></span>
+                        <span class="h1 mx-2 muted">
+				  <i class="far fa-bookmark"></i>
+				</span>
+                    </div>
+                    <hr>
+                    <div class="com-upload-form" id="comFor-1s" hidden>
+                        <form id="com-form" class="com-form">
+                            <input type="hidden" name="postId" value="1s"/>
+                            <textarea placeholder="Comment" name="comment"> </textarea>
+                            <br>
+                            <button type="button" id="comment">comment</button>
+                        </form>
+                    </div>
+                    <div>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum ad est cumque nulla
+                            voluptatem enim voluptas minima illum quis! Voluptatibus dolorem minus tempore aliquid
+                            corrupti nesciunt, obcaecati fuga natus officiis.</p>
+                    </div>
+                    <hr>
+                    <div id="comments" class="com">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="img-upload-form" id="img-upload">
+        <form id="upl-form" enctype=multipart/form-data">
+            <input type="file" placeholder="Image" name="image">
+            <br>
+            <textarea placeholder="Description" name="description"> </textarea>
+            <br>
+            <button type="button" id="upload">upload</button>
+        </form>
+    </div>
+
+    <button type="submit" class="upload btn border border-secondary border-rounded bg-light">add post</button>
+</div>
+<section id="page-splash" class="page-splash">
+    <div id="log" class="d-flex justify-content-center" hidden>
+        <div class="mx-3">
+            <h3>Вход</h3>
+            <form id="login-form">
+                <input type="text" name="username" class="form-control mb-1" placeholder="Логин"><br>
+                <input type="password" name="password" class="form-control mb-1" placeholder="Пароль"><br>
+                <button type="submit" class="btn btn-outline-primary btn-block">Login</button><br>
+                <a href="../templates/registration.ftlh" class="btn btn-outline-primary btn-block">Register</a>
+            </form>
+        </div>
+    </div>
+</section>
+<script src="js/script.js"></script>
+</body>
+</html>

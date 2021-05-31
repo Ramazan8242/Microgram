@@ -1,0 +1,41 @@
+.no-scroll {
+    overflow: hidden;
+}
+
+.page-splash {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #ccc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.img-upload-form {
+    display: flex;
+    position: relative;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #ccc;
+    justify-content: center;
+    align-items: center;
+}
+.com-upload-form {
+    display: flex;
+    position: relative;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #ccc;
+    justify-content: center;
+    align-items: center;
+}
+.btn {
+    margin-bottom: 10px;
+}

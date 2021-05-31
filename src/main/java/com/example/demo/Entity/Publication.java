@@ -43,9 +43,6 @@ public class Publication {
         this.description = description;
     }
 
-    public Publication(User user, String des) {
-    }
-
     public static Publication createPublication(String pathPicture, String description, LocalDate date, User user) {
         Publication publication = new Publication();
         publication.setPathPicture(pathPicture);

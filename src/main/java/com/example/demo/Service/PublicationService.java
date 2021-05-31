@@ -15,8 +15,29 @@ import java.util.List;
 @AllArgsConstructor
 public class PublicationService {
     private final PublicationRepository publicationRepository;
+    private final SubscriptionRepository subscriptionRepository;
+    private final UserRepository userRepository;
+    private final LikeRepository likeRepository;
+    private final CommentRepository commentRepository;
 
-    public List<PublicationDTO> publicationService(String id){
+    public List<Publication> findAllMySubPosts(String id) {
+        List<Subscription> allByUserId = subscriptionRepository.findAllPublicationByUserId(id);
+        List<Publication> posts = new ArrayList<>();
+        for (Subscription s :
+                allByUserId) {
+            List<Publication> publicationByUser = publicationRepository.findAllPublicationByUserId(s.getToUser().getId());
+            posts.addAll(publicationByUser);
+        }
+        return posts;
+    }
+
+    public Publication findById(String id) throws Exception {
+        return publicationRepository.findById(id).orElseThrow(() -> new Exception("There is no such publication"));
+    }
+
+    public List<PublicationDTO> publicationService(String id) throws Exception {
+        User user = userRepository.findById(id)
+                .orElseThrow(() -> new Exception("There is no such a user with " + id + " id"));
         List<Publication> allPublicationByUserId = publicationRepository.findAllPublicationByUserId(id);
         List<PublicationDTO> posts = new ArrayList<>();
         for (Publication publication : allPublicationByUserId) {
@@ -30,6 +51,9 @@ public class PublicationService {
     }
 
     public boolean deletePost(String publicationId) {
+        Publication publicationById = (Publication) publicationRepository.findPublicationById(publicationId);
+        likeRepository.deleteLikesByPublicationId(publicationId);
+        commentRepository.deleteCommentsByPublicationId(publicationId);
         publicationRepository.deleteById(publicationId);
         return true;
     }

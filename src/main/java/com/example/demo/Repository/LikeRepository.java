@@ -8,4 +8,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface LikeRepository extends MongoRepository<Like, String> {
+    boolean existsLikeByUserAndPublication(User userById, Publication publicationId);
+    void deleteLikesByPublicationId(String publicationId);
 }

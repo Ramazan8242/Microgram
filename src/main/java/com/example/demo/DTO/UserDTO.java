@@ -22,6 +22,9 @@ public class UserDTO {
                 .username(user.getUsername())
                 .email(user.getEmail())
                 .password(user.getPassword())
+                .countOfPosts(user.getCountOfPosts())
+                .countOfFollowers(user.getCountOfFollowers())
+                .countOfSubs(user.getCountOfSubs())
                 .build();
     }
 }

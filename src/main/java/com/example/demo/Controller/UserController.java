@@ -23,4 +23,19 @@ public class UserController {
         }
         return userService.addUser(user);
     }
+
+    @GetMapping("/search/name")
+    public List<UserDTO> findUsersByName(@RequestParam("name") String name) {
+        return userService.findUserByName(name);
+    }
+
+    @GetMapping("/search/login")
+    public UserDTO findUserByLogin(@RequestParam("login") String login) {
+        return userService.findUserByLogin(login);
+    }
+
+    @GetMapping("/search/email/")
+    public UserDTO findUserByEmail(@RequestParam("email") String email) {
+        return userService.findUserByEmail(email);
+    }
 }
