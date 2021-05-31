@@ -78,15 +78,15 @@ function createPostElement(post) {
 };
 
 async function getUser() {
-    return await fetch('http://localhost:8080/getUser');
+    return await fetch('https://jsonplaceholder.typicode.com/users');
 }
 
 function getPosts() {
-    return fetch('http://localhost:8080/posts');
+    return fetch('https://jsonplaceholder.typicode.com/posts');
 }
 
 async function getComments() {
-    return await fetch('http://localhost:8080/comments');
+    return await fetch('https://jsonplaceholder.typicode.com/comments');
 }
 
 getPosts().then(res => res.json()).then(data => addPostsFromDB(data));
@@ -275,14 +275,6 @@ function uuid4() {
 };
 
 addEventListeners(document.getElementById('1s'));
-
-document.getElementById('sign-out').addEventListener('click', function () {
-    localStorage.clear();
-    window.location.href = BASE_URL;
-})
-
-
-const BASE_URL = "http://localhost:8080";
 
 function saveUser(user) {
     const userAsJSON = JSON.stringify(user)
