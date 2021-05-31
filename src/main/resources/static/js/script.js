@@ -142,11 +142,10 @@ upload.addEventListener('click', async function () {
     const form = document.getElementById('upl-form');
     let data = new FormData(form);
     data.append("userId", await getUserId());
-    await fetch('http://localhost:8080/addPost', {
+    await fetch('https://jsonplaceholder.typicode.com/posts', {
         method: 'POST',
         body: data
     }).then(r => r.json()).then(data => console.log(data));
-    window.location.href = BASE_URL;
 });
 
 let comment = document.getElementById('com-form');
@@ -158,14 +157,13 @@ function addEvListenerToCommentButton(fo) {
         let data = new FormData(fo);
         data.append("userEmail", await getUserEmail());
         data.append("userId", await getUserId());
-        await fetch('http://localhost:8080/addComment', {
+        await fetch('https://jsonplaceholder.typicode.com/comments', {
             method: 'POST',
             body: data
         }).then(r => r.json()).then(data => console.log(data));
         let c = new Comment(data.get("userId"), data.get("postId"), data.get("comment"), data.get("userEmail"));
         // addComment(createCommentElement(c));
         document.getElementById('comFor-' + c.commentFor).hidden = true;
-        window.location.href = BASE_URL;
     });
 }
 
