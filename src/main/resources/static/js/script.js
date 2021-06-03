@@ -290,18 +290,18 @@ function onRegisterHandler(e) {
     const form = e.target;
     const data = new FormData(form);
     const userJSON = JSON.stringify(Object.fromEntries(data));
-    createUser(data).then(res => console.log('Success')).catch(error => console.log('ERROR: ' + error));
+    console.log(userJSON);
+    createUser(userJSON);
 }
 
-//
 const baseUrl = 'http://localhost:8080';
 
 async function createUser(userFormData) {
     const settings = {
         method: 'POST',
         cache: 'no-cache',
-        // mode : 'cors',
-        mode: 'Access-Control-Allow-Origin',
+        mode : 'cors',
+        // mode: 'Access-Control-Allow-Origin',
         headers: {
             'Content-Type': 'application/json'
 
