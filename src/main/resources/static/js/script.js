@@ -6,14 +6,13 @@ window.addEventListener('load', function () {
     }
 });
 function hideSplashScreen() {
-    document.getElementById('page-splash').hidden = true;
+    document.getElementsByClassName('container').hidden = true;
     document.body.classList.remove('no-scroll');
 };
 
 function showSplashScreen() {
-    document.getElementById('page-splash').hidden = false;
+    document.getElementsByClassName('container').hidden = false;
     document.body.classList.add('no-scroll');
-
 };
 
 const addP = document.getElementsByClassName('upload')[0];
@@ -168,10 +167,10 @@ function addEvListenerToCommentButton(fo) {
 }
 
 function addComment(commentElem) {
-    let pId = commentElem.getElementsByTagName('input')[0].value;
+    // let pId = commentElem.getElementsByTagName('button')[0];
     let postsCont = document.getElementById("posts-cont");
-    let p = postsCont.getElementsByClassName(pId)[0];
-    p.getElementsByClassName("com")[0].append(commentElem);
+    let p = postsCont.getElementsByClassName(commentElem.getElementsByTagName('button')[0]);
+    postsCont.getElementsByClassName('com');
 }
 
 function addPost(postElem) {
@@ -282,42 +281,35 @@ function restoreUser() {
     return JSON.parse(userAsJSON);
 }
 
-const loginForm = document.getElementById('login-form');
-loginForm.addEventListener('submit', onLoginHandler);
-async function onLoginHandler(e) {
+const registrationForm = document.getElementById('registration-form');
+registrationForm.addEventListener('submit', onRegisterHandler);
+
+function onRegisterHandler(e) {
+    console.log(e);
     e.preventDefault();
     const form = e.target;
-    const userFormData = new FormData(form);
-    const user = Object.fromEntries(userFormData);
-    saveUser(user);
-    updateRootPage();
-}
-function updateRootPage() {
-    console.log("LS USER: " + localStorage.getItem('user'));
-    if (localStorage.getItem('user') == null){
-    } else {
-        fetchAuthorised(BASE_URL +'/posts').then(res => {
-            if (res.ok) {
-                hideSplashScreen();
-            } else {
-                showSplashScreen();
-            }
-        });
-    }
+    const data = new FormData(form);
+    const userJSON = JSON.stringify(Object.fromEntries(data));
+    createUser(data).then(res => console.log('Success')).catch(error => console.log('ERROR: ' + error));
 }
 
-function updateOptions(options) {
-    const update = { ...options };
-    update.mode = 'cors';
-    update.headers = { ... options.headers };
-    update.headers['Content-Type'] = 'application/json';
-    const user = restoreUser();
-    if(user) {
-        update.headers['Authorization'] = 'Basic ' + btoa(user.username + ':' + user.password);
-    }
-    return update;
-}
-function fetchAuthorised(url, options) {
-    const settings = options || {};
-    return  fetch(url, updateOptions(settings));
+//
+const baseUrl = 'http://localhost:8080';
+
+async function createUser(userFormData) {
+    const settings = {
+        method: 'POST',
+        cache: 'no-cache',
+        // mode : 'cors',
+        mode: 'Access-Control-Allow-Origin',
+        headers: {
+            'Content-Type': 'application/json'
+
+        },
+        body: userFormData
+    };
+
+    const response = await fetch(baseUrl + '/user/registration', settings);
+    const responseData = await response.json();
+    console.log(responseData);
 }

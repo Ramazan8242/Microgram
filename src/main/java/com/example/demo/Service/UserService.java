@@ -19,7 +19,7 @@ public class UserService implements UserDetailsService {
     private final UserRepository userRepository;
 
     public List<UserDTO> findUserByName(String name) {
-        List<User> names = userRepository.findByName(name);
+        List<User> names = userRepository.findBy(name);
         List<UserDTO> users = new ArrayList<>();
         for (User user : names) {
             users.add(UserDTO.from(user));
@@ -28,7 +28,7 @@ public class UserService implements UserDetailsService {
     }
 
     public UserDTO addUser(User user) {
-        return UserDTO.from(userRepository.save(User.createUser(user.getName(), user.getUsername(), user.getEmail(), user.getNoEncodePassword())));
+        return UserDTO.from(userRepository.save(User.createUser(user.getUsername(), user.getEmail(),user.getPassword())));
     }
 
     public UserDTO findUserByLogin(String username) {
@@ -56,8 +56,7 @@ public class UserService implements UserDetailsService {
 
     public User getUser() {
         Random r = new Random();
-        List<User> users = new ArrayList<>();
-        userRepository.findAll().forEach(u -> users.add(u));
+        List<User> users = new ArrayList<>(userRepository.findAll());
         return users.get(r.nextInt(users.size()));
     }
 }

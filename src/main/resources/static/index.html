@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Lesson 60. Javascript 101</title>
-    <link rel="stylesheet" href="css/styles.css">
+<!--    <link rel="stylesheet" href="css/styles.css">-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -30,10 +30,10 @@
                             <input type="hidden" name="postId" value="1s"/>
                             <textarea placeholder="Comment" name="comment"> </textarea>
                             <br>
-                            <button type="button" id="comment">comment</button>
+                            <button type="button" id="comment" class="com">comment</button>
                         </form>
                     </div>
-                    <div id="comments" class="com"></div>
+<!--                    <div id="comments" class="com"></div>-->
                 </div>
             </div>
         </div>
@@ -49,6 +49,21 @@
     </div>
 
     <button type="submit" class="upload btn border border-secondary border-rounded bg-light">add post</button>
+
+    <div class="testbox">
+        <h1>Registration</h1>
+
+        <form id="registration-form">
+<!--            <label id="icon" for="email"><i class="icon-envelope "></i></label>-->
+            <input type="email" name="email" id="email" placeholder="Email" required/>
+<!--            <label id="icon" for="username"><i class="icon-user"></i></label>-->
+            <input type="text" name="username" id="username" placeholder="Name" required/>
+<!--            <label id="icon" for="password"><i class="icon-shield"></i></label>-->
+            <input type="password" name="password" id="password" placeholder="Password" required/>
+
+            <button type="submit" class="button">Register</button>
+        </form>
+    </div>
 </div>
 <script src="js/script.js"></script>
 </body>

@@ -8,7 +8,6 @@ import lombok.*;
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @NoArgsConstructor(access = AccessLevel.PRIVATE, force = true)
 public class UserDTO {
-    private String name;
     private String username;
     private String email;
     private String password;
@@ -18,7 +17,7 @@ public class UserDTO {
 
     public static UserDTO from(User user) {
         return builder()
-                .name(user.getName())
+//                .name(user.getName())
                 .username(user.getUsername())
                 .email(user.getEmail())
                 .password(user.getPassword())

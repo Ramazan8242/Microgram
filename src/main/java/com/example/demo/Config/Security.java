@@ -52,7 +52,7 @@ public class Security extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 .anyRequest()
                 .permitAll();
-
+        http.cors().disable();
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         http.httpBasic();
         http.formLogin().disable().logout().disable();
