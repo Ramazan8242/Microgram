@@ -160,14 +160,12 @@ function addEvListenerToCommentButton(fo) {
             method: 'POST',
             body: data
         }).then(r => r.json()).then(data => console.log(data));
-        let c = new Comment(data.get("userId"), data.get("postId"), data.get("comment"), data.get("userEmail"));
-        // addComment(createCommentElement(c));
+        let c = new Comment(data.get("userId"), data.get("postId"), data.get("comment"), data.get("userEmail"));;
         document.getElementById('comFor-' + c.commentFor).hidden = true;
     });
 }
 
 function addComment(commentElem) {
-    // let pId = commentElem.getElementsByTagName('button')[0];
     let postsCont = document.getElementById("posts-cont");
     let p = postsCont.getElementsByClassName(commentElem.getElementsByTagName('button')[0]);
     postsCont.getElementsByClassName('com');
@@ -209,14 +207,6 @@ class Comment {
             this.comment = comment,
             this.cEmail = cEmail
     }
-};
-
-function like(post, postId, isLiked) {
-    if (post.id === postId) {
-        isLiked ? post.likes++ : post.likes--;
-        console.log(post);
-    }
-    ;
 };
 
 function addEventListeners(post) {
@@ -281,8 +271,34 @@ function restoreUser() {
     return JSON.parse(userAsJSON);
 }
 
-const registrationForm = document.getElementById('registration-form');
-registrationForm.addEventListener('submit', onRegisterHandler);
+// const loginForm = document.getElementById('login-form');
+// loginForm.addEventListener('submit', onLoginHandler);
+// async function onLoginHandler(e) {
+//     e.preventDefault();
+//     const form = e.target;
+//     const userFormData = new FormData(form);
+//     const user = Object.fromEntries(userFormData);
+//     saveUser(user);
+//     updateRootPage();
+// }
+function updateRootPage() {
+    console.log("LS USER: " + localStorage.getItem('user'));
+    if (localStorage.getItem('user') == null){
+    } else {
+        fetchAuthorised(BASE_URL +'/posts').then(res => {
+            if (res.ok) {
+                hideSplashScreen();
+            } else {
+                showSplashScreen();
+            }
+        });
+    }
+}
+
+document.getElementById('sign-out').addEventListener('click', function () {
+    localStorage.clear();
+    window.location.href = baseUrl;
+})
 
 function onRegisterHandler(e) {
     console.log(e);
@@ -294,14 +310,13 @@ function onRegisterHandler(e) {
     createUser(userJSON);
 }
 
-const baseUrl = 'http://localhost:8080';
+const baseUrl = 'file:///C:/Users/User/Desktop/Java/Java_7/Microgram-main/src/main/resources/static/index.html';
 
 async function createUser(userFormData) {
     const settings = {
         method: 'POST',
         cache: 'no-cache',
         mode : 'cors',
-        // mode: 'Access-Control-Allow-Origin',
         headers: {
             'Content-Type': 'application/json'
 
@@ -312,4 +327,27 @@ async function createUser(userFormData) {
     const response = await fetch(baseUrl + '/user/registration', settings);
     const responseData = await response.json();
     console.log(responseData);
+}
+const loginForm = document.getElementById('login-form');
+loginForm.addEventListener('submit', onLoginHandler);
+async function onLoginHandler(e) {
+    e.preventDefault();
+    const form = e.target;
+    const userFormData = new FormData(form);
+    const user = Object.fromEntries(userFormData);
+    saveUser(user);
+    updateRootPage();
+}
+function updateRootPage() {
+    console.log("LS USER: " + localStorage.getItem('user'));
+    if (localStorage.getItem('user') == null){
+    } else {
+        fetchAuthorised(BASE_URL +'/posts').then(res => {
+            if (res.ok) {
+                hideSplashScreen();
+            } else {
+                showSplashScreen();
+            }
+        });
+    }
 }
